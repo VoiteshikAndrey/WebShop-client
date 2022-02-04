@@ -1,0 +1,31 @@
+$black-color: #1D1F22;
+
+.currency-list {
+    position: absolute;
+    top: 25px;
+    left: -42px;
+
+    display: none;
+
+    width: 114px;
+    padding: 20px;
+
+    box-sizing: border-box;
+    color: $black-color;
+    background-color: #fff;
+    filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+}
+
+.currency {
+    margin-bottom: 20px;
+
+    font-family: "Raleway";
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 160%;
+
+    cursor: pointer;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

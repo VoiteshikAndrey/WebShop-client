@@ -1,0 +1,115 @@
+$green-color: #5ECE7B;
+$black-color: #1D1F22;
+/////////////////////////////
+
+.category-title {
+    margin: 0 0 85px 0;
+    font-size: 2.625rem;
+    font-family: "Raleway";
+    font-weight: 400;
+}
+
+.list {
+    display: grid;
+    gap: 100px 40px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/////////////////////////////
+#header {
+    padding-top: 24px;
+    margin-bottom: 80px;
+    height: 56px;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 1220px;
+    height: 100%;
+}
+
+.header-inner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    height: 100%;
+
+    font-size: 1rem;
+    font-family: "Raleway";
+    font-weight: 400;
+
+    color: $black-color;
+}
+
+.header-logo{
+    position: absolute;
+    right: 47%;
+
+    font-size: 1.2rem;  
+    font-weight: 600;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 0 16px;
+    color: $black-color;
+
+    transition: 0.1s linear;
+
+    &:hover {
+        font-weight: 600;
+        color: $green-color;
+        border-bottom: $green-color 2px solid;
+    }
+}
+
+.header-action {
+    .fas{
+        position: relative;
+        margin-left: 38px;
+        transition: 0.15s ease;
+        &:hover {
+            color: $green-color;
+        }
+    }
+}
+
+.fa-dollar-sign {
+    .switch{
+        right: -10px;
+        top: 40%;
+        width: 4px;
+        height: 4px;
+        border-color: $black-color;
+        &:hover {
+            border-color: $green-color;
+        }
+    }    
+}
+
+.blackout {
+    position: fixed;
+    left: 0;
+    z-index: 4;
+
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+    background: rgba(57, 55, 72, 0.22);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #bbb9b9;
+    border-radius: 10px;
+}  

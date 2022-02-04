@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {useRoutes} from './routes.js';
+// import {useAuth} from './hooks/auth.hook';
+import { render } from "react-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import "./reset.css";
+// import {AuthContext} from './context/AuthContext';
+// import {Loader} from './components/loader'
+// import './public/css/reset.css';
+
 
 function App() {
+  // const {token, userId, login, logout, role, userName, userAvatar, ready} = useAuth();
+  // const {token, userId, login, logout, role, userName, userAvatar} = 0;
+  // const isAuthenticated = !!token;
+  // const routes = useRoutes(isAuthenticated, role);
+  console.log("Start!");
+  const routes = useRoutes();
+  // if(!ready){
+  //   return (<Loader/>)
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+          {routes}
+      </BrowserRouter>
   );
 }
 
