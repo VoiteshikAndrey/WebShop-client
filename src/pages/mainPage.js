@@ -23,8 +23,8 @@ export const MainPage = () => {
 
     return (
         <div id="wrapper" className="wrapper">
-            <Header/>
             <div id="container" className="container">
+                <Header/>
                 <div className="category-title">Category name</div>
                 <div className="list">
                     

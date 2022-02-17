@@ -6,43 +6,39 @@ import {GET_PRODUCT_BY_ID} from "../../query/product";
 import {GET_ALL_PRODUCTS} from "../../query/product"
 import {Query} from '@apollo/client/react/components';
 import {useDispatch, useSelector} from 'react-redux';
-
-import { GetTotalPrice } from '../../crunch/getTotalPrice';
+import {addPrice} from '../../store/cartReduser';
+import {removePrice} from '../../store/cartReduser';
+import {removeProductAction} from '../../store/cartReduser';
+import {addCount} from '../../store/cartReduser';
+import {removeCount} from '../../store/cartReduser';
 
 import './cart.css';
 
 export const Cart = () => {
-    const cartId = "61efcf05599eca673ae3cf24";
-    // const [cart, setCart] = useState();
+    document.getElementById('body').style.overflow = "visible";
+    document.getElementById('body').style.padding = "0 0 0 0";
+
+    const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.cart); //Get cart from Redux
+    console.log("FASDASDASDasd");
     const cartReverse = Array.from(cart).reverse();
-    // const [totalPrice, setTotalPrice] = useState(0);
 
-    // let totalPrice = 0;
-    const totalPrice = GetTotalPrice(cartReverse);
-    console.log("TP", totalPrice);
+    const RemoveProduct = (product, count) => { //Удаляет все одинаковые предметы, если их больше 2
+        console.log("PID", product);
+        dispatch(removeProductAction(product.id));
+        dispatch(removePrice(product.price*count)); 
+    }
 
-    // const AddPrice = (price) => {
-    //     console.log("TotalPrice ",totalPrice, "Price ", Number(price));
-    //     totalPrice = totalPrice + Number(price);
-    //     console.log("TotalPrice ",totalPrice);
-    //     // localStorage.setItem('totalPrice', totalPrice);
-    // }
-    // const {data, loading, error} = useQuery(GET_CART, {
-    //     variables: {
-    //         id: "61efcf05599eca673ae3cf24"
-    //     }
-    // });
+    
+    const AddCount = (product) => {
+        dispatch(addCount(product.id));
+        dispatch(addPrice(product.price));
+    }
 
-    // console.log("data", data);
-
-    // useEffect(()=> {
-    //     if(!loading) {
-    //         console.log("Cart", cart);
-    //         console.log("data", data);
-    //         setCart(data.getCart);
-    //     };
-    // });
+    const RemoveCount = (product) => {
+        dispatch(removeCount(product.id));
+        dispatch(removePrice(product.price)); 
+    }
 
     return(
     <div className="cart">
@@ -51,17 +47,17 @@ export const Cart = () => {
             {({loading, data})=> {
                 if(loading) return "Loading...";
                 // const cart = data.getCart;
+                    
                 if(cartReverse){
+                    console.log("cartReverse",cartReverse);
+                    
                 return cartReverse.map((productList) => {
                     return (
                         <Query query = {GET_PRODUCT_BY_ID} variables = {{id: productList.productId}}>
                             {({loading, data})=>{
                             if(loading) return "Loading...";
                             const product = data.getProduct;
-                            // console.log("BEFORE", totalPrice);
-                            // AddPrice(product.price);
-                            // setTotalPrice(totalPrice + Number(product.price));
-                            // console.log("AFTER", totalPrice);
+                            
                             return (<>
                             <div className="product-list">
                                 <div className="cart-product">
@@ -75,12 +71,13 @@ export const Cart = () => {
                                         <div className="price">
                                             ${product.price}
                                         </div>
+                                        <i class="fas fa-trash-alt" onClick={() => RemoveProduct(product, productList.count)}></i>
                                     </div>
                 
                                     <div className="amount">
-                                        <div className="amount-button">+</div>
-                                        <div className="number">1</div>
-                                        <div className="amount-button">–</div>
+                                        <div className="amount-button" onClick={() => AddCount(product)}>+</div>
+                                        <div className="number">{productList.count}</div>
+                                        <div className="amount-button" onClick={() => RemoveCount(product)}>–</div>
                                     </div>
                 
                                     <div className="image">

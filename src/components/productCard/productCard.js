@@ -5,7 +5,6 @@ import "./productCard.css"
 
 export const ProductCard = ({product}) => {
     const navigate = useNavigate();
-    console.log("Дошло", product);
 
     return (
         <div onClick={()=>navigate(`/product/${product.id}`)} className="product-card">
@@ -18,8 +17,7 @@ export const ProductCard = ({product}) => {
                 </div>
                 <div className="content">
                     <div className="product-name">
-                        {product.productbrand}
-                        {product.productname}
+                        {product.productbrand + " " + product.productname}
                     </div>
                     <div className="price">${product.price}</div>
                 </div>

@@ -7,25 +7,21 @@ import {ADD_PRODUCT_TO_CART} from "../../mutations/cart";
 
 import {useDispatch, useSelector} from 'react-redux';
 import {addProductAction} from '../../store/cartReduser';
+import {addPrice} from '../../store/cartReduser';
 
 import "./productInfo.css"
 
 export const ProductInfo = () => {
 
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart);
-    console.log("YEEEES", cart);
-    console.log("YEEEES");
-
+    const cart = Array.from(useSelector(state => state.cart.cart));
     const productId = useParams().id;
-    const [addToCart] = useMutation(ADD_PRODUCT_TO_CART);
+    
     const [product, setProduct] = useState();
     const {data, loading, error} = useQuery(GET_PRODUCT_BY_ID, {
         variables: {
             id: productId
         }});
-
-    console.log(data);
 
     const [mainImage, setMainImage] = useState();
 
@@ -34,17 +30,27 @@ export const ProductInfo = () => {
     };
 
     const AddProductToCart = (e) => {
-        console.log("Start!!!");
+        var found = cart.some(function (product) {
+            return product.productId === productId;
+        });
+
+        if(found){
+            window.flash('This item is already in the cart!', 'error')
+            return;
+        }
         dispatch(addProductAction({
                     productId: productId,
-                    count: "1"
-                }))
+                    count: 1
+                }));
+
+        dispatch(addPrice(product.price));
         // addToCart({
         //     variables: {
         //         productId: productId,
         //         count: "1"
         //     }
         // })
+        window.flash('Product added to cart! ', 'success')
     };
 
     useEffect(()=> {
@@ -59,7 +65,6 @@ export const ProductInfo = () => {
     
     return (<>
         {product &&
-        <div className="container">
 
         <div className="productInfo">
             <div className="product-images">
@@ -119,9 +124,7 @@ export const ProductInfo = () => {
                 <div className="description">Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.</div>
             </div>
         </div>
-
-        </div>
-}
+        }
     </>
     );
 };

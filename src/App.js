@@ -4,6 +4,10 @@ import {useRoutes} from './routes.js';
 import { render } from "react-dom";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import "./reset.css";
+
+import {Flash} from './components/flash-message/flash-message';
+import Bus from './Utils/Bus';
+
 // import {AuthContext} from './context/AuthContext';
 // import {Loader} from './components/loader'
 // import './public/css/reset.css';
@@ -19,10 +23,14 @@ function App() {
   // if(!ready){
   //   return (<Loader/>)
   // }
+
+  window.flash = (message, type="success") => Bus.emit('flash', ({message, type}));
+
   return (
-      <BrowserRouter>
-          {routes}
-      </BrowserRouter>
+    <BrowserRouter>
+      <Flash/>
+      {routes}
+    </BrowserRouter>
   );
 }
 

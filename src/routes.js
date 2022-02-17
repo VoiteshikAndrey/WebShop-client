@@ -3,7 +3,9 @@ import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {MainPage}  from './pages/mainPage';
 import {ProductPage}  from './pages/productPage';
+import {ProfilePage}  from './pages/profilePage';
 import {CartPage}  from './pages/cartPage';
+import {AuthPage}  from './pages/authPage';
 // import {NewsPage} from './pages/newsPage';
 // import {ProfilePage} from './pages/profilePage';
 // import {AdminPage} from './pages/adminPage';
@@ -18,6 +20,8 @@ export const useRoutes = (isAuthenticated, role) => {
             <Route path="/main" element={<MainPage/>}/>
             <Route path="/product/:id" element={<ProductPage/>}/>
             <Route path="/cart" element={<CartPage/>}/>
+            <Route path="/auth" element={<AuthPage/>}/>
+            <Route path="/profile" element={<ProfilePage/>}/>
             
             {/* <Redirect to='/' /> */}
         </Routes>

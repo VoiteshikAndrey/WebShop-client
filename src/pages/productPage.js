@@ -6,8 +6,10 @@ import {ProductInfo} from '../components/productInfo/productInfo'
 export const ProductPage = () => {
     return (
         <div className="wrapper">
-            <Header/>
-            <ProductInfo/>
+            <div id="container" className="container">
+                <Header/>
+                <ProductInfo/>
+            </div>
         </div>
     )
 };

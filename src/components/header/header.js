@@ -4,10 +4,15 @@ import {MiniCart} from '../mini-cart/mini-cart'
 import {Currency} from '../currency/currency'
 // import {AuthContext} from '../context/AuthContext';
 import './header.css';
+import {useDispatch, useSelector} from 'react-redux';
+import {logoutUserAction} from '../../store/authReduser';
 
 export const Header = () => {
 
+    const auth = useSelector(state => state.auth);
     const navigate  = useNavigate();
+    const dispatch = useDispatch();
+    // const select = useSelector();
 
     const links = <>
         <NavLink className="nav-link" activeClassName="active-nav-link" to="/main">CLOSER</NavLink>
@@ -15,11 +20,6 @@ export const Header = () => {
         <NavLink className="nav-link" activeClassName="active-nav-link" to="/profile">FURNITURE</NavLink>
         {/* <button className="nav-button" >LOGOUT</button> */}
     </>
-
-    // function blackout() {
-    //     const bg = document.getElementById('blackout');
-    //     bg.style.dispalay = "block";
-    // };
 
     function ShowCurrency(){
         if(document.getElementById('currency-list').style.display == "block"){
@@ -30,6 +30,12 @@ export const Header = () => {
             document.getElementById('currency-list').style.display = "block";
             document.getElementById('currency-switch').style.transform = "rotate(135deg)";
         }
+    }
+     
+    const Logout = () => {
+        console.log("Начали удалять")
+        dispatch(logoutUserAction(""));
+        navigate('/auth')
     }
 
 
@@ -51,7 +57,6 @@ export const Header = () => {
 
     return (
         <header id="header">
-            <div className="container">
                 <div className="header-inner">
                     <nav className="header-nav">
                             {links}
@@ -65,9 +70,15 @@ export const Header = () => {
                         <i id="cart" href="/cart" class="fas fa-shopping-cart" onMouseOver={e => Show(true)} onMouseOut={e => Show(false)}>
                             <div id="window" className="window"><MiniCart/></div>
                         </i>
+                        {auth.isAuthenticated ? <>
+                            <i class="fa-solid fa-user" onClick={()=>{navigate('/profile')}}></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket" onClick={()=>Logout()}></i>
+                        </>:
+                            <i class="fa-solid fa-arrow-right-to-bracket" onClick={()=>navigate('/auth')}></i>
+                        }
+
                     </div>
                 </div>
-            </div>
 
             <div className="blackout" id="blackout"></div>
         </header>

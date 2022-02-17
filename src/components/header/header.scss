@@ -70,7 +70,7 @@ $black-color: #1D1F22;
 }
 
 .header-action {
-    .fas{
+    .fas{   
         position: relative;
         margin-left: 38px;
         transition: 0.15s ease;
@@ -113,3 +113,7 @@ $black-color: #1D1F22;
     background-color: #bbb9b9;
     border-radius: 10px;
 }  
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
