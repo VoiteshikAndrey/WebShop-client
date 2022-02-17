@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {loginUserAction} from '../../store/authReduser';
 
 export const RegisterForm = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     let navigate = useNavigate();
     const [newUser] = useMutation(CREATE_USER);
     // const auth = useContext(AuthContext);

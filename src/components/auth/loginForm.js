@@ -3,37 +3,43 @@ import React, {useState, useContext} from 'react';
 // import {AuthContext} from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import {LOGIN_USER} from "../../mutations/user";
+import {useDispatch, useSelector} from 'react-redux';
+import {loginUserAction} from '../../store/authReduser';
 //TODO: Сделать обработку в форме! 
 
 export const LoginForm = () => {
+    const dispatch = useDispatch();
     let navigate = useNavigate();
-    // const [newUser] = useMutation(CREATE_USER);
-    // const auth = useContext(AuthContext);
-    // const {loading, error, request} = useHttp();
+    const [loginUser] = useMutation(LOGIN_USER);
+    const [errors, setErrors] = useState();
     const [form, setForm] = useState({
         login: '', password: ''
     });
+    
     const changeHandler = event => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }       
 
     const loginHandler = async () => {
-        // let user;
+        let user;
 
-        // try {
-        //     // newUser({
-        //     //     variables: {
-        //     //         input: form
-        //     //     }
-        //     // }).then(({data}) => {
-        //     //     setErrors(JSON.parse(data.createUser.errors));
-        //     //     user = (JSON.parse(data.createUser.data));
-        //     //     if(user){
-        //     //         dispatch(loginUserAction(user));  
-        //     //         navigate("/main");  
-        //     //     }
-        //     })
-        // } catch (e) {}
+        console.log('Form', form);
+
+        try {
+            loginUser({
+                variables: {
+                    input: form
+                }
+            }).then(({data}) => {
+                setErrors(JSON.parse(data.loginUser.errors));
+                user = (JSON.parse(data.loginUser.data));
+                if(user){
+                    dispatch(loginUserAction(user));  
+                    navigate("/main");  
+                }
+            })
+        } catch (e) {}
     };
 
     // const ShowPassword = (event) => {
@@ -53,7 +59,7 @@ export const LoginForm = () => {
         <>
         <div className="form-body">
             <span className="body-title">SING IN</span>
-            {/* <span className="error-message">{"error"}</span> */}
+            <span className="error-message">{errors}</span>
                 <div class="input-container">
                     <label className="input-title" for="login">Login</label>
                     <input className="input-field" autoFocus type="text" id="login" name="login"
@@ -67,7 +73,7 @@ export const LoginForm = () => {
                     </div>
                 </div>
                 <div className="body-buttons">
-                    <button className="singin-button" type="submit"  onClick={()=>loginHandler()}>SING IN</button>
+                    <button className="singin-button" type="submit" onClick={()=>loginHandler()}>SING IN</button>
                     <form action="http://localhost:3000/">
                         <button className="back-button" onClick={()=>{navigate("/main")}}>BACK</button>
                     </form>
