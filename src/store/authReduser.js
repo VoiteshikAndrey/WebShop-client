@@ -1,13 +1,15 @@
 import {useQuery, useMutation} from "@apollo/client";
 
+const auth = JSON.parse(localStorage.getItem('auth'));
 
 const defaultState = { 
-    isAuthenticated: localStorage.getItem('isAuthenticated') ? localStorage.getItem('isAuthenticated') : false,
-    token: localStorage.getItem('isAuthenticated') ? localStorage.getItem('isAuthenticated') : null,
-    userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : null,
-    userRole: localStorage.getItem('userRole') ? localStorage.getItem('userRole') : "guest",
-    userName: localStorage.getItem('userName') ? localStorage.getItem('userName') : "guest",
-    userAvatar: localStorage.getItem('userAvatar') ? localStorage.getItem('userAvatar') : "",
+    isAuthenticated: auth.isAuthenticated ? auth.isAuthenticated : false,
+    token: auth.token ? auth.token : null,
+    userId: auth.userId ? auth.userId : null,
+    cartId: auth.cartId ? auth.cartId : null,
+    userRole: auth.userRole ? auth.userRole : "guest",
+    userName: auth.userName ? auth.userName : "guest",
+    userAvatar: auth.userAvatar ? auth.userAvatar : "",
 }
   
 const logoutState = {
@@ -32,7 +34,7 @@ export const authReduser = (state = defaultState, action) => {
     switch (action.type) {
         case LOGIN_USER:
             return {...state, isAuthenticated: true, userId: action.payload._id, userName: action.payload.userName, 
-                role: action.payload.role, userAvatar: action.payload.avatar};
+                role: action.payload.role, userAvatar: action.payload.avatar, cartId: action.payload.cartId};
         case LOGOUT_USER:
             return logoutState;
         default:

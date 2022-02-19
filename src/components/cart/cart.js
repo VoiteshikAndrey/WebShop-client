@@ -35,9 +35,11 @@ export const Cart = () => {
         dispatch(addPrice(product.price));
     }
 
-    const RemoveCount = (product) => {
-        dispatch(removeCount(product.id));
-        dispatch(removePrice(product.price)); 
+    const RemoveCount = (product, count) => {
+        if(count > 1){
+            dispatch(removeCount(product.id));
+            dispatch(removePrice(product.price)); 
+        }
     }
 
     return(
@@ -77,7 +79,7 @@ export const Cart = () => {
                                     <div className="amount">
                                         <div className="amount-button" onClick={() => AddCount(product)}>+</div>
                                         <div className="number">{productList.count}</div>
-                                        <div className="amount-button" onClick={() => RemoveCount(product)}>–</div>
+                                        <div className="amount-button" onClick={() => RemoveCount(product,  productList.count)}>–</div>
                                     </div>
                 
                                     <div className="image">

@@ -12,3 +12,11 @@ export const ADD_PRODUCT_TO_CART = gql `
         }
     }
 `;
+
+export const SAVE_CART_TO_DB = gql `
+    mutation saveCartToDB($input: CartInput) {
+        saveCartToDB(input: $input) {
+            data, errors
+        }
+    }
+`;

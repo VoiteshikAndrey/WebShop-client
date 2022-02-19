@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 import {LOGIN_USER} from "../../mutations/user";
 import {useDispatch, useSelector} from 'react-redux';
 import {loginUserAction} from '../../store/authReduser';
+import {setCart} from '../../store/cartReduser';
 //TODO: Сделать обработку в форме! 
 
 export const LoginForm = () => {
@@ -23,7 +24,7 @@ export const LoginForm = () => {
 
     const loginHandler = async () => {
         let user;
-
+        let userCart
         console.log('Form', form);
 
         try {
@@ -33,9 +34,14 @@ export const LoginForm = () => {
                 }
             }).then(({data}) => {
                 setErrors(JSON.parse(data.loginUser.errors));
-                user = (JSON.parse(data.loginUser.data));
+                console.log(JSON.parse(data.loginUser.data).user);
+                console.log(JSON.parse(data.loginUser.data).userCart);
+
+                user = JSON.parse(data.loginUser.data).user;
+                userCart = JSON.parse(data.loginUser.data).userCart;
                 if(user){
                     dispatch(loginUserAction(user));  
+                    dispatch(setCart(userCart));  
                     navigate("/main");  
                 }
             })

@@ -5,19 +5,21 @@ import {Query} from '@apollo/client/react/components';
 import './mini-cart.css';
 import {useDispatch, useSelector} from 'react-redux';
 import { MiniProductCard } from './mini-productCard';
-
+import { SaveSession } from '../../Utils/SaveSession';
 export const MiniCart = () => {
     const navigate = useNavigate();
+
     const cart = useSelector(state => state.cart.cart); //Get cart from Redux  
     const totalPrice = useSelector(state => state.cart.totalPrice); //Get cart from Redux  Заменить потом чуть что расчёт в Redux
+    const auth = useSelector(state => state.auth);
 
     const cartReverse = Array.from(cart).reverse();
     const productNumber = Object.keys(cart).length;
 
-    // window.addEventListener('beforeunload', function (e) { // Узнать куда можно перенести 
-    //     localStorage.setItem('cart', JSON.stringify(cart));
-    //     localStorage.setItem('totalPrice', totalPrice)
-    // }) 
+    window.addEventListener('beforeunload', function (e) { // Узнать куда можно перенести 
+        console.log('End');
+        SaveSession(cart, totalPrice, auth);
+    }) 
 
     const Test = () => {
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -72,7 +74,7 @@ export const MiniCart = () => {
                 <div className="second-button button" onClick={() => navigate("/cart")}>
                     VIEW BAG
                 </div>
-                <div onClick={() =>{window.flash('record has been created successfully!', 'error')}}className="button">
+                <div onClick={()=>SaveSession(cart, totalPrice, auth)}className="button">
                     CHECK OUT
                 </div>
                 
