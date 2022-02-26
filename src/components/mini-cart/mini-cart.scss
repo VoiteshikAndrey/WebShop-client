@@ -3,6 +3,7 @@ $black-color: #1D1F22;
 
 .mini-cart {
     all: revert;
+    
     width: 325px;
     color: $black-color;
     background-size: 325px 100px;
@@ -23,6 +24,15 @@ $black-color: #1D1F22;
         .items {
             font-weight: 500;
         }
+    }
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: 0;
+        width: 70px;
+        height: 60px;
     }
 
 
@@ -46,6 +56,9 @@ $black-color: #1D1F22;
     }
 
     .info {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
         width: 136px;
         .brand {
             font-family: "Raleway";
@@ -138,15 +151,12 @@ $black-color: #1D1F22;
 
 .fa-shopping-cart {
     position: relative;
-    height: 55px;
 }
 
 .section {
     width: 100%;
     overflow: hidden;
 }
-
-
 
 .d1 h3 {
     color: #F16246;
@@ -197,5 +207,22 @@ $black-color: #1D1F22;
         font-weight: 500;
         background-color: #fff;
         
+    }
+}
+
+.characteristic-block {
+    display: inline-block;
+
+    font-size: 1rem;
+    font-family: "Source Sans Pro";
+    font-weight: normal;
+
+    .characteristic {
+        display: inline-block;
+
+        padding: 3px 5px 3px 5px;
+
+        box-sizing: border-box;
+        border: #1D1F22 1px solid;
     }
 }

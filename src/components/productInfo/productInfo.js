@@ -3,25 +3,25 @@ import {NavLink, useHistory, useParams} from 'react-router-dom';
 import {Loader} from '../loader/loader';
 import {useQuery, useMutation} from "@apollo/client";
 import {GET_PRODUCT_BY_ID} from "../../query/product";
-import {ADD_PRODUCT_TO_CART} from "../../mutations/cart";
 
 import {useDispatch, useSelector} from 'react-redux';
 import {addProductAction} from '../../store/cartReduser';
-import {addPrice} from '../../store/cartReduser';
 
 import "./productInfo.css"
 
 export const ProductInfo = () => {
 
     const dispatch = useDispatch();
-    const cart = Array.from(useSelector(state => state.cart.cart));
+    const productList = Array.from(useSelector(state => state.cart.productList));
     const productId = useParams().id;
-    
+
+    const settings = useSelector(state=>state.settings);
     const [product, setProduct] = useState();
+    const [selecteСharacteristic, SetSelecteСharacteristic] = useState();
     const {data, loading, error} = useQuery(GET_PRODUCT_BY_ID, {
         variables: {
             id: productId
-        }});
+        }})
 
     const [mainImage, setMainImage] = useState();
 
@@ -30,7 +30,7 @@ export const ProductInfo = () => {
     };
 
     const AddProductToCart = (e) => {
-        var found = cart.some(function (product) {
+        var found = productList.some(function (product) {
             return product.productId === productId;
         });
 
@@ -38,31 +38,26 @@ export const ProductInfo = () => {
             window.flash('This item is already in the cart!', 'error')
             return;
         }
-        dispatch(addProductAction({
+        dispatch(addProductAction({product:{
                     productId: productId,
+                    characteristic: selecteСharacteristic,
                     count: 1
-                }));
+                }, price: product.price}));
 
-        dispatch(addPrice(product.price));
-        // addToCart({
-        //     variables: {
-        //         productId: productId,
-        //         count: "1"
-        //     }
-        // })
         window.flash('Product added to cart! ', 'success')
     };
 
     useEffect(()=> {
         if(!loading) {
             setProduct(data.getProduct);
+            SetSelecteСharacteristic(data.getProduct.characteristics.variants[0].id);
         };
-    });
-
+    },[data]);
+    
     if(!product) {
         return <div>Loading...</div>;
     }
-    
+
     return (<>
         {product &&
 
@@ -87,24 +82,16 @@ export const ProductInfo = () => {
                 </div>
                 <div className="specifications">
                     <div className="title">
-                        SIZE:
+                        {product.characteristics.characteristicsName + ":"}
                     </div>
                     <div className="options-list">
-                        <div className="option option-active">
-                            S
-                        </div>
-                        <div className="option option-available">
-                            M
-                        </div>
-                        <div className="option option-available">
-                            L
-                        </div>
-                        <div className="option option-available">
-                            XL
-                        </div>
-                        <div className="option option-unavailable">
-                            XXL
-                        </div>
+                        {product.characteristics.variants.map((variant) =>{
+                            return (
+                            <div className={selecteСharacteristic === variant.id ? "option option-active" : variant.number < 1 ? "option option-unavailable": "option option-available"}
+                                onClick={()=>SetSelecteСharacteristic(variant.id)}>
+                                {variant.variantName}
+                            </div>)
+                        })}
                     </div>
                 </div>
 
@@ -113,7 +100,7 @@ export const ProductInfo = () => {
                         PRICE:
                     </div>
                     <div className="value">
-                        ${product.price}
+                        {settings.currencies[settings.selectedСurrency].symbol + " " +(product.price*settings.currencies[settings.selectedСurrency].rate).toFixed(2)}
                     </div>
                 </div>
 

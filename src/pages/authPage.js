@@ -39,17 +39,17 @@ export const AuthPage = () => {
     return (
         <div id="bgColor">
 
-        <div class="section-auth">
-            <div class="logo">
-                WebShop
-            </div>
+            <div class="section-auth">
+                <div class="logo">
+                    WebShop
+                </div>
 
-            <div class="singin-form">
-                {formHeader}
-                {selForm}
+                <div class="singin-form">
+                    {formHeader}
+                    {selForm}
+                </div>
+                
             </div>
-            
-        </div>
             
         </div>
     )

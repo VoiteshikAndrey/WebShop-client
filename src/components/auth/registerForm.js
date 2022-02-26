@@ -6,6 +6,7 @@ import {CREATE_USER} from "../../mutations/user"
 // import {AuthContext} from '../context/AuthContext';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginUserAction} from '../../store/authReduser';
+import {setCart} from '../../store/cartReduser';
 
 export const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -23,17 +24,23 @@ export const RegisterForm = () => {
     }
     const registerHandler = async () => {
         let user;
-
+        let userCart;
         try {
             newUser({
                 variables: {
                     input: form
                 }
             }).then(({data}) => {
+                console.log("data", data);
                 setErrors(JSON.parse(data.createUser.errors));
-                user = (JSON.parse(data.createUser.data));
+                console.log(JSON.parse(data.createUser.data).user);
+                console.log(JSON.parse(data.createUser.data).userCart);
+
+                user = JSON.parse(data.createUser.data).user;
+                userCart = JSON.parse(data.createUser.data).userCart;
                 if(user){
                     dispatch(loginUserAction(user));  
+                    dispatch(setCart(userCart));  
                     navigate("/main");  
                 }
             })

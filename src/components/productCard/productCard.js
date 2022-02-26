@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
-// import {AuthContext} from '../context/AuthContext';
+import {useSelector} from 'react-redux';
 import "./productCard.css"
 
 export const ProductCard = ({product}) => {
     const navigate = useNavigate();
+    const settings = useSelector(state=>state.settings);
 
     return (
         <div onClick={()=>navigate(`/product/${product.id}`)} className="product-card">
@@ -19,7 +20,7 @@ export const ProductCard = ({product}) => {
                     <div className="product-name">
                         {product.productbrand + " " + product.productname}
                     </div>
-                    <div className="price">${product.price}</div>
+                    <div className="price">{settings.currencies[settings.selectedСurrency].symbol + " " +(product.price*settings.currencies[settings.selectedСurrency].rate).toFixed(2)}</div>
                 </div>
             </div>
         </div>

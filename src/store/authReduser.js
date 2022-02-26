@@ -1,15 +1,19 @@
-import {useQuery, useMutation} from "@apollo/client";
+let auth = true;
+try {
+    auth = JSON.parse(localStorage.getItem('auth'));
 
-const auth = JSON.parse(localStorage.getItem('auth'));
+} catch (e) {
+    auth = false;
+}
 
 const defaultState = { 
-    isAuthenticated: auth.isAuthenticated ? auth.isAuthenticated : false,
-    token: auth.token ? auth.token : null,
-    userId: auth.userId ? auth.userId : null,
-    cartId: auth.cartId ? auth.cartId : null,
-    userRole: auth.userRole ? auth.userRole : "guest",
-    userName: auth.userName ? auth.userName : "guest",
-    userAvatar: auth.userAvatar ? auth.userAvatar : "",
+    isAuthenticated: auth ? auth.isAuthenticated : false,
+    token: auth ? auth.token : null,
+    userId: auth ? auth.userId : null,
+    cartId: auth ? auth.cartId : null,
+    userRole: auth ? auth.userRole : "guest",
+    userName: auth ? auth.userName : "guest",
+    userAvatar: auth ? auth.userAvatar : "",
 }
   
 const logoutState = {
@@ -23,12 +27,6 @@ const logoutState = {
 
 const LOGIN_USER = "LOGIN_USER";
 const LOGOUT_USER = "LOGOUT_USER";
-
-// const ADD_PRICE = "ADD_PRICE";
-// const REMOVE_PRICE = "REMOVE_PRICE";
-  
-// const ADD_COUNT = "ADD_COUNT";
-// const REMOVE_COUNT = "REMOVE_COUNT";
   
 export const authReduser = (state = defaultState, action) => {
     switch (action.type) {
@@ -44,9 +42,3 @@ export const authReduser = (state = defaultState, action) => {
   
 export const loginUserAction = (payload) => ({type: LOGIN_USER, payload});
 export const logoutUserAction = (payload) => ({type: LOGOUT_USER, payload});
-
-// export const addPrice = (payload) => ({type: ADD_PRICE, payload});
-// export const removePrice = (payload) => ({type: REMOVE_PRICE, payload});
-
-// export const addCount = (payload) => ({type: ADD_COUNT, payload});
-// export const removeCount = (payload) => ({type: REMOVE_COUNT, payload});

@@ -8,10 +8,26 @@ export const GET_ALL_PRODUCTS = gql `
     }
 `;
 
+export const GET_PRODUCTS_BY_CATEGORY = gql `
+    query getProductsByCategory($category: String) {
+        getProductsByCategory(category: $category) {
+            id, productname, productbrand, price, category, images, characteristics {
+              characteristicsName, variants {
+                variantName, number, id
+              } 
+            }
+        }
+    }
+`;
+
 export const GET_PRODUCT_BY_ID = gql `
     query getProduct($id: ID){
         getProduct(id: $id){
-            id, productname, productbrand, price, category, images
+            id, productname, productbrand, price, category, images, characteristics {
+                characteristicsName, variants {
+                  variantName, number, id
+                } 
+            }
         }
     }
 `

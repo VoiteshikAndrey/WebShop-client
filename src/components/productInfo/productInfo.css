@@ -78,8 +78,8 @@
 .options-list {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 63px 12px 63px 12px 63px 12px 63px;
-  grid-template-columns: repeat(4, 63px);
+  -ms-grid-columns: 64px 12px 64px 12px 64px 12px 64px;
+  grid-template-columns: repeat(4, 64px);
   grid-auto-rows: 45px;
   gap: 12px;
   margin-top: 8px;
@@ -116,6 +116,7 @@
 }
 
 .option-unavailable {
+  pointer-events: none;
   cursor: default;
   color: #A6A6A6;
   border-color: #A6A6A6;

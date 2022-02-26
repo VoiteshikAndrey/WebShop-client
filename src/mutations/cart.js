@@ -1,12 +1,13 @@
 import {gql} from "@apollo/client";
 
 export const ADD_PRODUCT_TO_CART = gql `
-    mutation addProductToCart($productId: String, $count: String) {
-        addProductToCart(productId: $productId, count: $count) {
+    mutation addProductToCart($productId: String, $count: String, $characteristic: ID) {
+        addProductToCart(productId: $productId, count: $count, characteristic:  $characteristic) {
             id, 
             productList {
                 productId,
-                count
+                count,
+                characteristic
             }, 
             totalPrice
         }
@@ -14,7 +15,7 @@ export const ADD_PRODUCT_TO_CART = gql `
 `;
 
 export const SAVE_CART_TO_DB = gql `
-    mutation saveCartToDB($input: CartInput) {
+    mutation saveCartToDB($input: String) {
         saveCartToDB(input: $input) {
             data, errors
         }

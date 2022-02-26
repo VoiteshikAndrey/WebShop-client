@@ -62,10 +62,17 @@
   transition: 0.1s linear;
 }
 .nav-link:hover {
+  cursor: pointer;
   font-weight: 600;
   color: #5ECE7B;
   border-bottom: #5ECE7B 2px solid;
 }
+.active-nav-link{
+  font-weight: 600;
+  color: #5ECE7B;
+  border-bottom: #5ECE7B 2px solid;
+}
+
 
 .header-action i {
   position: relative;
@@ -77,14 +84,14 @@
   color: #5ECE7B;
 }
 
-.fa-dollar-sign .switch {
+.fas .switch {
   right: -10px;
   top: 40%;
   width: 4px;
   height: 4px;
   border-color: #1D1F22;
 }
-.fa-dollar-sign .switch:hover {
+.fas .switch:hover {
   border-color: #5ECE7B;
 }
 

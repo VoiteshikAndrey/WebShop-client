@@ -10,6 +10,16 @@
   border-top: #E5E5E5 1px solid;
 }
 .cart-product .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-right: 607px;
 }
 .cart-product .info .brand {
@@ -20,7 +30,6 @@
   line-height: 27px;
 }
 .cart-product .info .product-name {
-  margin-bottom: 26px;
   font-weight: 300;
   font-size: 1.875rem;
   line-height: 27px;
@@ -44,6 +53,53 @@
   height: 45px;
   font-size: 2rem;
   font-weight: 100;
+}
+
+.cart-option {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 64px 12px 80px;
+  grid-template-columns: 64px 80px;
+  grid-gap: 12px;
+  width: 64px;
+  height: 45px;
+}
+.cart-option .fa-trash-alt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 45px;
+  height: 45px;
+  color: #1D1F22;
+  font-size: 1.4rem;
+  border-radius: 100px;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+}
+.cart-option .fa-trash-alt:hover {
+  cursor: pointer;
+  color: #fff;
+  background: #1D1F22;
+}
+
+.delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  background: #be2f2f;
 }
 
 .switch {
