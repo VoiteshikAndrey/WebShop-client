@@ -14,7 +14,6 @@ export const MainPage = () => {
                 <Header/>
                 <ProductList/>
             </div>
-            <MiniCart/>
         </div>
     )
 };

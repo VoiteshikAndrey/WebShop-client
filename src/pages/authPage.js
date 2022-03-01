@@ -20,7 +20,7 @@ export const AuthPage = () => {
     if(isLoginForm) {
         selForm = <LoginForm/>
         formHeader = <div className="form-header">  
-                        <span className="form-button">SING IN</span>
+                        <span className="form-button">sign IN</span>
                         <button className="slide-button slide-button-right" onClick={() => setLoginForm(false)}>
                             <div className="form-button">REGISTER</div>
                         </button>
@@ -30,7 +30,7 @@ export const AuthPage = () => {
         selForm = <RegisterForm/>
         formHeader = <div className="form-header">
                         <button className="slide-button slide-button-left" onClick={() => setLoginForm(true)}>
-                            <span className="form-button">SING IN</span>
+                            <span className="form-button">sign IN</span>
                         </button>
                         <span className="form-button">REGISTER</span>
                     </div>

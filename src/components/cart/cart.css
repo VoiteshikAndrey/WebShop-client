@@ -64,7 +64,7 @@
   width: 64px;
   height: 45px;
 }
-.cart-option .fa-trash-alt {
+.cart-option .trash-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,9 +82,12 @@
   -webkit-transition: 0.1s linear;
   transition: 0.1s linear;
 }
-.cart-option .fa-trash-alt:hover {
+.cart-option .trash-icon .icon {
+  height: 22px;
+}
+.cart-option .trash-icon:hover {
   cursor: pointer;
-  color: #fff;
+  fill: #fff;
   background: #1D1F22;
 }
 

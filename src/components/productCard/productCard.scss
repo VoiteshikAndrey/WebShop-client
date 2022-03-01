@@ -11,7 +11,7 @@ $black-color: #1D1F22;
         cursor: pointer;
         box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
         .card-basket {
-            display: block;
+            display: flex;
         }
     }
 }
@@ -54,7 +54,8 @@ $black-color: #1D1F22;
     z-index: 1;
     bottom: -26px;
     right: 15px;
-
+    justify-content: center;
+    align-items: center;
     display: none;
 
     width: 52px;
@@ -68,16 +69,15 @@ $black-color: #1D1F22;
         background-color: $dark-green-color;
     }
 
-    .fa-shopping-cart {
+    .cart-icon {
         display: flex;
+
         align-items: center;
         justify-content: center;
 
-        width: 100%;
-        height: 100%;
+        height: 22px;
 
-        font-size: 1.375rem;
-        color: #fff;
+        fill: #fff;
     }
 }
 

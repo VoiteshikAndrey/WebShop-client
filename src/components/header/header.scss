@@ -70,20 +70,31 @@ $black-color: #1D1F22;
 }
 
 .header-action {
-    .fas{   
+    display: flex;
+    justify-content: space-between;
+
+    .icon{   
         position: relative;
-        margin-left: 38px;
+        padding: 0px 10px 10px 10px;
+        margin-left: 18px;
         transition: 0.15s ease;
         &:hover {
-            color: $green-color;
+            fill: $green-color;
         }
     }
 }
 
-.fa-dollar-sign {
+.currensy-icon{
+    position: relative;
+    padding-right: 20px;
+    font-family: Roboto;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
     .switch{
-        right: -10px;
-        top: 40%;
+        position: absolute;
+        top: 10%;
+        left: 20px;
         width: 4px;
         height: 4px;
         border-color: $black-color;
@@ -103,6 +114,21 @@ $black-color: #1D1F22;
     width: 100vw;
     height: 100vh;
     background: rgba(57, 55, 72, 0.22);
+}
+
+.cart-icon {
+    position: relative;
+    height: 16px;
+    transition: 0.15s ease;
+    cursor: pointer;
+    &:hover {
+        fill: $green-color;
+    }
+}
+
+.icon {
+    height: 16px;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {

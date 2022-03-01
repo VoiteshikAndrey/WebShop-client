@@ -65,7 +65,7 @@ $grey: #E5E5E5;
     width: 64px;
     height: 45px;
 
-    .fa-trash-alt {
+    .trash-icon {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -79,9 +79,12 @@ $grey: #E5E5E5;
         
         transition: 0.1s linear;
 
+        .icon {
+            height: 22px;
+        }
         &:hover {
             cursor: pointer;
-            color: #fff;
+            fill: #fff;
             background: #1D1F22;
         }
     }
