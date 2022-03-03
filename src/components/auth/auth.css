@@ -91,6 +91,7 @@
     font-family: "Raleway";
     font-size: 1.5rem;
     font-weight: bold;
+    text-transform: uppercase;
 
     cursor: pointer;
     text-decoration: none;

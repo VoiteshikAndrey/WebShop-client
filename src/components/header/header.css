@@ -67,6 +67,12 @@
   border-bottom: #5ECE7B 2px solid;
 }
 
+.active-nav-link {
+  font-weight: 600;
+  color: #5ECE7B;
+  border-bottom: #5ECE7B 2px solid;
+}
+
 .header-action {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -80,7 +80,7 @@ export const RegisterForm = () => {
                     <input className="input-field" type="password" maxlength="40" id="confirmPassword" name="confirmPassword" required onChange={changeHandler}></input>
                 </div>
                 <div className="body-buttons">
-                    <button className="singin-button" type="submit" onClick={()=> registerHandler()}>sign UP</button>
+                    <button className="singin-button" type="submit" onClick={()=> registerHandler()}>SIGN UP</button>
                     <button className="back-button" onClick={()=>{navigate("/main")}}>BACK</button>
                 </div>
         </div>

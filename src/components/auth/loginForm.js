@@ -64,7 +64,7 @@ export const LoginForm = () => {
     return(
         <>
         <div className="form-body">
-            <span className="body-title">sign IN</span>
+            <span className="body-title">SIGN IN</span>
             <span className="error-message">{errors}</span>
                 <div class="input-container">
                     <label className="input-title" for="login">Login</label>

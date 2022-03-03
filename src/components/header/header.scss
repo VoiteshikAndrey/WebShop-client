@@ -54,21 +54,25 @@ $black-color: #1D1F22;
 .header-nav {
     display: flex;
 }
-
 .nav-link {
     text-decoration: none;
     padding: 0 16px;
     color: $black-color;
-
+    
     transition: 0.1s linear;
-
+    
     &:hover {
         font-weight: 600;
         color: $green-color;
         border-bottom: $green-color 2px solid;
     }
 }
-
+    
+.active-nav-link {
+    font-weight: 600;
+    color: $green-color;
+    border-bottom: $green-color 2px solid;
+}
 .header-action {
     display: flex;
     justify-content: space-between;
