@@ -73,48 +73,4 @@ export const MiniProductCard = ({productList}) => {
             </div>
         </div>
     </>)
-
-    // return(<Query query = {GET_PRODUCT_BY_ID} variables = {{id: productList.productId}}>
-    //     {({loading, data})=>{
-    //         if(loading) return "Loading...";
-            
-    //         const product = data.getProduct;
-    //         // AddToTotalPrice(product.price);
-    //         return (<>
-    //             <div className="mini-products">
-    //                 <div className="mini-product">
-    //                     <div className="info">
-    //                         <div>
-    //                             <div className="brand">
-    //                                 {product.productbrand}
-    //                             </div>
-    //                             <div className="product-name">
-    //                                 {product.productname}
-    //                             </div>
-    //                         </div>
-    //                         <div className="price">
-    //                             ${product.price.toFixed(2)}
-    //                         </div>
-    //                         {console.log("PROD", product)}
-    //                         {console.log("productList.characteristic", productList.characteristic)}
-    //                         {console.log("PROD!@", product.characteristics.variants.filter(variant => variant.id === productList.characteristic))}
-    //                         <div className="characteristic">{product?.characteristics.variants.filter(variant => variant.id === productList.characteristic)[0].variantName}</div>
-    //                     </div>
-
-    //                     <div className="amount">
-    //                         <div className="amount-button" onClick={() => AddCount(product, productList.count)}>+</div>
-    //                         <div className="number">{productList.count}</div>
-    //                         <div className="amount-button" onClick={() => RemoveCount(product, productList.count)}>–</div>
-    //                     </div>
-
-    //                     <div className="image">
-    //                         <img src={product.images[0]} alt="" />
-    //                     </div>
-    //                 </div>
-
-                    
-    //             </div>
-    //         </>)
-    //     }}
-    // </Query>)
 }

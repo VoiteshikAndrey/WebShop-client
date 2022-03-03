@@ -28,10 +28,7 @@ export const RegisterForm = () => {
                     input: form
                 }
             }).then(({data}) => {
-                console.log("data", data);
                 setErrors(JSON.parse(data.createUser.errors));
-                console.log(JSON.parse(data.createUser.data).user);
-                console.log(JSON.parse(data.createUser.data).userCart);
 
                 user = JSON.parse(data.createUser.data).user;
                 userCart = JSON.parse(data.createUser.data).userCart;

@@ -27,7 +27,6 @@ export const LoginForm = () => {
     const loginHandler = async () => {
         let user;
         let userCart
-        console.log('Form', form);
 
         try {
             loginUser({
@@ -36,8 +35,6 @@ export const LoginForm = () => {
                 }
             }).then(({data}) => {
                 setErrors(JSON.parse(data.loginUser.errors));
-                console.log(JSON.parse(data.loginUser.data).user);
-                console.log(JSON.parse(data.loginUser.data).userCart);
 
                 user = JSON.parse(data.loginUser.data).user;
                 userCart = JSON.parse(data.loginUser.data).userCart;

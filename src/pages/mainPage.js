@@ -6,8 +6,6 @@ import {MiniCart} from '../components/mini-cart/mini-cart';
 
 export const MainPage = () => {
     
-    console.log("MAIN PAGE!!!!");
-    
     return (
         <div id="wrapper" className="wrapper">
             <div id="container" className="container">

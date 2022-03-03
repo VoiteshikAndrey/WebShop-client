@@ -21,10 +21,8 @@ export const MiniCart = () => {
     const productNumber = Object.keys(cart.productList).length;
     
     window.addEventListener('beforeunload', function (e) { // Узнать куда можно перенести 
-        console.log('Save session', cart);
         SaveSession(cart, auth);
         Save();
-        console.log("Сохранили в локал");
     }) 
     
     const Save = async () => {
@@ -66,8 +64,6 @@ export const MiniCart = () => {
             </div>
         )
     }
-
-    console.log("MINICART");
 
     return (
         <>

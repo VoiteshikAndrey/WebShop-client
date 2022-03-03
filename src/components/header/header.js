@@ -22,8 +22,6 @@ export const Header = () => {
     const dispatch = useDispatch();
     const productId = useParams();
 
-    console.log("PARAM",productId);
-
     const SetCategory = (category) => {
         dispatch(setCategoryAction(category));
         setActiveBtn(category)
@@ -93,10 +91,6 @@ export const Header = () => {
         <div onClick={()=>Logout()}>{logout_icon}</div>
         </>)
         :user.push(<div onClick={()=>navigate('/auth')}>{login_icon}</div>)
-
-    console.log("HEADER");
-
-
 
     return (
         <header id="header">
