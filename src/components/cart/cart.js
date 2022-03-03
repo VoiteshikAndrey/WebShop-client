@@ -18,7 +18,6 @@ export const Cart = () => {
     const productListReverse = Array.from(cart.productList).reverse();
 
     const RemoveProduct = (product, count) => {
-        console.log("PID", product);
         dispatch(removeProductAction({productId: product.id, price: product.price*count}));
     }
 

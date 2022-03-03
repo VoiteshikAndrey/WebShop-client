@@ -1,5 +1,4 @@
 const cart = JSON.parse(localStorage.getItem('cart'));
-console.log("CAAAAAART",cart);
 const defaultState = { 
     productList: cart ? cart.productList : [],
     totalPrice: cart ? cart.totalPrice : 0,
@@ -26,7 +25,6 @@ export const cartReduser = (state = defaultState, action) => {
             return {...state, productList: [...state.productList, action.payload.product], 
                 totalPrice: state.totalPrice + action.payload.price};
         case REMOVE_PRODUCT:
-            console.log("Satate", action.payload);
             return {...state, productList: state.productList.filter(product => product.productId !== action.payload.productId),
                  totalPrice: state.totalPrice - action.payload.price};
         case ADD_COUNT:
@@ -38,7 +36,6 @@ export const cartReduser = (state = defaultState, action) => {
             let removeCount = state.productList.concat();
             return {...state, productList: removeCount, totalPrice: state.totalPrice - action.payload.price};
         case SET_CART:
-            console.log(action.payload);
             return {productList: action.payload.productList, totalPrice: action.payload.totalPrice, cartId: action.payload._id};
         case CLEAR_CART: 
             return clearState;
