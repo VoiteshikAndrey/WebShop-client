@@ -9,8 +9,7 @@ import {removeCount} from '../../store/cartReduser';
 import './cart.css';
 
 export const Cart = () => {
-    document.getElementById('body').style.overflow = "visible";
-    document.getElementById('body').style.padding = "0 0 0 0";
+    
 
     const dispatch = useDispatch();
     const settings = useSelector(state=>state.settings);

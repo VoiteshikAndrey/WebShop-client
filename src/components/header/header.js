@@ -94,27 +94,27 @@ export const Header = () => {
 
     return (
         <header id="header">
-                <div className="header-inner">
+            <div className="header-inner">
+                
+                {links}
+                
+                <div className="header-logo">WEBSHOP</div>
+                <div className="header-action">
+                    <i className="currensy-icon" onClick={e => ShowCurrency()}>
+                        {settings.currencies[settings.selectedСurrency].symbol}
+                        <div id="currency-switch" className="switch switch-down"></div>
+                        <Currency/>
+                    </i>
+                    <div id="cart" className="cart-icon icon" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>{cart_icon}<div id="window" className="window"><MiniCart/></div></div>
+                    {/* {cart_icon}
+                    <i id="cart" href="/cart" class="fas fa-shopping-cart" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>
+                        <div id="window" className="window"><MiniCart/></div>
+                    </i> */}
                     
-                    {links}
-                    
-                    <div className="header-logo">WEBSHOP</div>
-                    <div className="header-action">
-                        <i className="currensy-icon" onClick={e => ShowCurrency()}>
-                            {settings.currencies[settings.selectedСurrency].symbol}
-                            <div id="currency-switch" className="switch switch-down"></div>
-                            <Currency/>
-                        </i>
-                        <div id="cart" className="cart-icon icon" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>{cart_icon}<div id="window" className="window"><MiniCart/></div></div>
-                        {/* {cart_icon}
-                        <i id="cart" href="/cart" class="fas fa-shopping-cart" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>
-                            <div id="window" className="window"><MiniCart/></div>
-                        </i> */}
-                        
-                        {user}
+                    {user}
 
-                    </div>
                 </div>
+            </div>
 
             <div className="blackout" id="blackout"></div>
         </header>

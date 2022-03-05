@@ -9,8 +9,8 @@
   display: -ms-grid;
   display: grid;
   gap: 100px 40px;
-  -ms-grid-columns: 1fr 40px 1fr 40px 1fr;
-  grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
 }
 
 #header {
@@ -23,7 +23,6 @@
   margin: 0 auto;
   padding: 0 10px;
   width: 1220px;
-  height: 100%;
 }
 
 .header-inner {
@@ -58,9 +57,11 @@
   text-decoration: none;
   padding: 0 16px;
   color: #1D1F22;
+  cursor: pointer;
   -webkit-transition: 0.1s linear;
   transition: 0.1s linear;
 }
+
 .nav-link:hover {
   font-weight: 600;
   color: #5ECE7B;
@@ -81,6 +82,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
 .header-action .icon {
   position: relative;
   padding: 0px 10px 10px 10px;
@@ -88,21 +90,25 @@
   -webkit-transition: 0.15s ease;
   transition: 0.15s ease;
 }
+
 .header-action .icon:hover {
   fill: #5ECE7B;
 }
 
 .currensy-icon {
   position: relative;
-  padding-right: 20px;
-  font-family: Roboto;
+  font-family: "Raleway";
+  font-weight: 500;
   font-size: 18px;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
 }
+
 .currensy-icon .switch {
   position: absolute;
   top: 10%;
@@ -110,8 +116,19 @@
   width: 4px;
   height: 4px;
   border-color: #1D1F22;
+  -webkit-transition: 0.15s ease;
+  transition: 0.15s ease;
 }
+
 .currensy-icon .switch:hover {
+  border-color: #5ECE7B;
+}
+
+.currensy-icon:hover {
+  color: #5ECE7B;
+}
+
+.currensy-icon:hover .switch {
   border-color: #5ECE7B;
 }
 
@@ -132,6 +149,7 @@
   transition: 0.15s ease;
   cursor: pointer;
 }
+
 .cart-icon:hover {
   fill: #5ECE7B;
 }
@@ -153,3 +171,4 @@
 ::-webkit-scrollbar {
   -webkit-appearance: none;
 }
+/*# sourceMappingURL=header.css.map */

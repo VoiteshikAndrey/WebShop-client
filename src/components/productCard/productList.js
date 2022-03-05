@@ -22,13 +22,14 @@ export const ProductList = () => {
         };
     },[data]);
 
-    return (<>
-        <div className="category-title">{category.selectedСategory}</div>
-            <div className="list">
-                {products && products.map((product) => {
-                    return <ProductCard product={product}/>
-                })}
-            </div>
+    return (
+        <>
+            <div className="category-title">{category.selectedСategory}</div>
+                <div className="list">
+                    {products && products.map((product) => {
+                        return <ProductCard product={product}/>
+                    })}
+                </div>
         </>
     );
 };

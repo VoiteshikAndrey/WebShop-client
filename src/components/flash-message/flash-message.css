@@ -5,21 +5,30 @@
   top: 50px;
   right: 10px;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 1111;
-  }
-  .alert p {
+}
+
+.alert p {
   margin: 0;
-  }
-  .alert-error {
+}
+
+.alert-error {
   background: lightcoral;
-  }
-  .alert-success {
+}
+
+.alert-success {
   background: #5ECE7B;
-  }
-  .close {
+}
+
+.close {
   color: white;
   cursor: pointer;
   margin-right: 10px;
-  }
+}
+/*# sourceMappingURL=flash-message.css.map */
