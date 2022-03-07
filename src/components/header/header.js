@@ -50,13 +50,14 @@ export const Header = () => {
     }
      
     const Logout = () => {
-        dispatch(logoutUserAction(""));
-        dispatch(clearCart(""));
+        console.log("Logout");
         saveCart({
             variables: {
                 input: JSON.stringify(cart)
             }
         });
+        dispatch(logoutUserAction(""));
+        dispatch(clearCart(""));
         navigate('/auth')
     }
 

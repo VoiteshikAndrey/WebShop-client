@@ -15,3 +15,11 @@ export const LOGIN_USER = gql `
         }
     }
 `;
+
+export const LOGIN_WITH_GOOGLE = gql `
+    mutation loginWithGoogle($input: String) {
+        loginWithGoogle(input: $input) {
+            data, errors
+        }
+    }
+`;
