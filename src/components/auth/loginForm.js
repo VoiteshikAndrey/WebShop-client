@@ -125,9 +125,9 @@ export const LoginForm = () => {
                 </div>
                 <div className="body-buttons">
                     <button className="singin-button" type="submit" onClick={()=>loginHandler()}>SIGN IN</button>
-                    <form action="http://localhost:3000/">
+                    {/* <form action="http://localhost:3000/"> */}
                         <button className="back-button" onClick={()=>{navigate("/main")}}>BACK</button>
-                    </form>
+                    {/* </form> */}
                 </div>
         </div>
 
