@@ -13,12 +13,6 @@ import GoogleLogin from 'react-google-login';
 
 export const LoginForm = () => {
 
-    const [loginData, setLoginData] = useState(
-        localStorage.getItem('loginData') 
-        ? JSON.parse(localStorage.getItem('loginData'))
-        : null
-    );
-
     const dispatch = useDispatch();
     let navigate = useNavigate();
     const [loginUser] = useMutation(LOGIN_USER);
@@ -85,25 +79,8 @@ export const LoginForm = () => {
                     dispatch(setCart(userCart));  
                     navigate("/main");  
                 }
-                // setErrors(JSON.parse(data.loginUser.errors));
-
-                // user = JSON.parse(data.loginUser.data).user;
-                // userCart = JSON.parse(data.loginUser.data).userCart;
-                // if(user){
-                //     dispatch(loginUserAction(user));  
-                //     dispatch(setCart(userCart));  
-                //     navigate("/main");  
-                // }
             })
         } catch (e) {}
-
-        setLoginData(googleData);
-        localStorage.setItem('loginData', JSON.stringify(googleData));
-    }
-
-    const handleLogout = () => {
-        localStorage.removeItem('loginData');
-        setLoginData(null);
     }
 
     return(
@@ -140,13 +117,7 @@ export const LoginForm = () => {
                     </div>
                     <div class="service-name">VKontakte</div>
                 </a>
-                {/* <a class="service" href="#">
-                    <div class="service-logo">
-                        <img src="https://i.ibb.co/k1K4Zsb/google-logo.png" alt=""></img>
-                    </div>
-                    <div class="service-name">GOOGLE</div>
-                </a> */}
-                {/* <a class="service" href="#"> */}
+
                 <GoogleLogin 
                 className="google-login-button"
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -156,28 +127,9 @@ export const LoginForm = () => {
                 cookiePolicy={'single_host_origin'}
                 >
                 </GoogleLogin>
-                {/* </a> */}
             </div>
         </div>
-{/* 
-        {
-            loginData ? (
-                <div>
-                    <h3>You logged in as {loginData.email}</h3>
-                    <button onClick={handleLogout}>Logout</button>
-                </div>
-            )
-            : (
-                <GoogleLogin 
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                buttonText="Log in with Google"
-                onSuccess={handleLogin}
-                onFailure={handleFailure}
-                cookiePolicy={'single_host_origin'}
-                >
-                </GoogleLogin>
-            )
-        } */}
+
 
         </>
     );

@@ -9,8 +9,8 @@ import {Provider} from 'react-redux';
 import {store} from './store/store';
 
 const client = new ApolloClient({
-  uri: 'http://206.189.55.151:80/graphql',
-  // uri: 'http://localhost:5000/graphql',
+  uri: 'https://andreyvoiteshik.tech/graphql',
+  // uri: 'https://localhost:5000/graphql',
   cache: new InMemoryCache()
 })
 
