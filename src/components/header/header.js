@@ -32,11 +32,23 @@ export const Header = () => {
         navigate("/main");
     }
 
-    const links = <nav className="header-nav">
-        <div className={activeBtn === "All" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("All")}>ALL</div>
-        <div className={activeBtn === "Clothes" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Clothes")}>CLOTHES</div>
-        <div className={activeBtn === "Technics" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Technics")}>TECHNICS</div>
-    </nav>
+    const links = <>
+        <nav className="header-nav">
+            <div className={activeBtn === "All" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("All")}>ALL</div>
+            <div className={activeBtn === "Clothes" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Clothes")}>CLOTHES</div>
+            <div className={activeBtn === "Technics" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Technics")}>TECHNICS</div>
+        </nav>
+            
+        <div className="category-mobile">
+            CATEGORY
+            {/* <div id="switch" className="switch switch-down"></div> */}
+            <div className="category-list">
+                <div className={activeBtn === "All" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("All")}>ALL</div>
+                <div className={activeBtn === "Clothes" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Clothes")}>CLOTHES</div>
+                <div className={activeBtn === "Technics" ? "active-nav-link nav-link":"nav-link"} onClick={()=>categoryHandler("Technics")}>TECHNICS</div>
+            </div>
+        </div>  
+    </>
 
     function ShowCurrency(){
         if(document.getElementById('currency-list').style.display == "block"){
@@ -87,8 +99,6 @@ export const Header = () => {
     auth.isAuthenticated ?
         user.push(<>
         <div onClick={()=>{navigate('/profile')}}>{profile_icon}</div>
-        {/* <i class="fa-solid fa-user" onClick={()=>{navigate('/profile')}}></i> */}
-        {/* <i class="fa-solid fa-arrow-right-from-bracket" onClick={()=>Logout()}></i> */}
         <div onClick={()=>Logout()}>{logout_icon}</div>
         </>)
         :user.push(<div onClick={()=>navigate('/auth')}>{login_icon}</div>)
@@ -107,10 +117,6 @@ export const Header = () => {
                         <Currency/>
                     </i>
                     <div id="cart" className="cart-icon icon" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>{cart_icon}<div id="window" className="window"><MiniCart/></div></div>
-                    {/* {cart_icon}
-                    <i id="cart" href="/cart" class="fas fa-shopping-cart" onMouseOver={() => Show(true)} onMouseOut={() => Show(false)}>
-                        <div id="window" className="window"><MiniCart/></div>
-                    </i> */}
                     
                     {user}
 

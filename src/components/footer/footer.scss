@@ -17,10 +17,27 @@ $grey: #9797a1;
 
 .footer-content {
     display: grid;
+    // justify-content: center;
     grid-template-columns: 3fr repeat(3, 1fr);
     grid-gap: 10%;
     
     margin: 20px 0;
+
+    @media (max-width: 1280px) {
+        grid-template-columns: 1fr repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    @media (max-width: 770px) {
+        padding-left: 50px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    @media (max-width: 425px) {
+        padding-left: 20px;
+    }
+    
 }
 
 .footer-logo {
@@ -28,7 +45,29 @@ $grey: #9797a1;
     font-size: 5rem;
 
     color: #fff;
+
+    @media (max-width: 1280px) {
+        font-size: 3rem;
+        margin-right: 30px;
+    }
+
+    @media (max-width: 770px) {
+        font-size: 4rem;
+    }
+
+    @media (max-width: 600px) {
+        grid-column: span 2;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 425px) {
+        font-size: 3rem;
+    }
+    
 }
+
+
+
 
 .footer-block {
     //text-align: right;
@@ -39,6 +78,10 @@ $grey: #9797a1;
         font-size: 1.25rem;
         font-weight: bold;
         color: #fff;
+
+        @media (max-width: 425px) {
+            font-size: 1rem;
+        }
     }
     .content {
         display: inline-block;
@@ -47,6 +90,10 @@ $grey: #9797a1;
         font-size: 1.0625rem;
 
         color: #fff;
+
+        @media (max-width: 425px) {
+            font-size: 0.8rem
+        }
     }
 }
 
